@@ -154,12 +154,12 @@ namespace Westwind.AspNetCore.LiveReload
         {
             Console.WriteLine($"Folder [{e.OldName}] renamed to [{e.Name}]");
             if (string.Compare(e.Name, FolderToMonitorName, StringComparison.OrdinalIgnoreCase) == 0)
-            {                
-                FileWatcher.EnableRaisingEvents = true;
+            {
+                StartFilesWatcher();
             }
             else if (string.Compare(e.OldName, FolderToMonitorName, StringComparison.OrdinalIgnoreCase) == 0)
-            {                
-                FileWatcher.EnableRaisingEvents = false;
+            {
+                DisposeFilesWatcher();
             }           
         }
     }
